@@ -17,7 +17,7 @@ public class ArrayDeque<T> {
     private void resize(int cap) {
         T[] a = (T[]) new Object[8];
         int oldIdx = addOne(nextFirst);
-        for (int i = 0;i < size;i ++) {
+        for (int i = 0; i < size; i++) {
             a[i] = items[oldIdx];
             oldIdx = addOne(oldIdx);
         }
@@ -26,12 +26,12 @@ public class ArrayDeque<T> {
         nextLast = size;
     }
 
-    private int minusOne(int Idx) {
-        return (Idx - 1 + items.length) % items.length;
+    private int minusOne(int idx) {
+        return (idx - 1 + items.length) % items.length;
     }
 
-    private int addOne(int Idx) {
-        return (Idx + 1) % items.length;
+    private int addOne(int idx) {
+        return (idx + 1) % items.length;
     }
 
     public void addFirst(T item) {
@@ -105,7 +105,7 @@ public class ArrayDeque<T> {
         if (index >= size) {
             return null;
         }
-        int target = (addOne(nextFirst)+index)%items.length;
+        int target = (addOne(nextFirst) + index) % items.length;
         return items[target];
 
     }

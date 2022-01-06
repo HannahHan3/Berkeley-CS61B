@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 
 public class ArrayDeque<T> {
 
@@ -8,18 +7,17 @@ public class ArrayDeque<T> {
     private int nextLast;
 
 
-    public ArrayDeque(){
+    public ArrayDeque() {
         this.items = (T[]) new Object[8];
         this.size = 0;
         this.nextFirst = 0;
         this.nextLast = 1;
-
     }
     // Resize array into capacity cap//
-    private void resize(int cap){
+    private void resize(int cap) {
         T[] a = (T[]) new Object[8];
         int oldIdx = addOne(nextFirst);
-        for(int i=0;i<size;i++){
+        for (int i = 0;i < size;i ++) {
             a[i] = items[oldIdx];
             oldIdx = addOne(oldIdx);
         }
@@ -28,19 +26,17 @@ public class ArrayDeque<T> {
         nextLast = size;
     }
 
-    public int minusOne(int Idx){
-        return (Idx-1+items.length)%items.length;
-
+    private int minusOne(int Idx) {
+        return (Idx - 1 + items.length) % items.length;
     }
 
-    public int addOne(int Idx){
-        return (Idx+1)%items.length;
-
+    private int addOne(int Idx) {
+        return (Idx + 1) % items.length;
     }
 
-    public void addFirst(T item){
+    public void addFirst(T item) {
         if (size == items.length){
-            resize(size*2);
+            resize(size * 2);
         }
         items[nextFirst] = item;
         nextFirst = minusOne(nextFirst);
@@ -48,17 +44,16 @@ public class ArrayDeque<T> {
 
     }
 
-    public void addLast(T item){
-        if (size == items.length){
-            resize(size*2);
+    public void addLast(T item) {
+        if (size == items.length) {
+            resize(size * 2);
         }
         items[nextLast] = item;
         nextLast = addOne(nextLast);
         size += 1;
-
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
@@ -66,7 +61,7 @@ public class ArrayDeque<T> {
         return size;
     }
 
-    public void printDeque(){
+    public void printDeque() {
         int i = addOne(nextFirst);
         for (int j = 0; j < size; j++) {
             System.out.print(items[i] + " ");
@@ -90,8 +85,8 @@ public class ArrayDeque<T> {
 
     }
 
-    public T removeLast(){
-        if(size == 0){
+    public T removeLast() {
+        if (size == 0) {
             return null;
         }
         int lastIdx = minusOne(nextLast);
@@ -106,7 +101,7 @@ public class ArrayDeque<T> {
 
     }
 
-    public T get(int index){
+    public T get(int index) {
         if (index >= size) {
             return null;
         }

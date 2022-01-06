@@ -15,7 +15,7 @@ public class ArrayDeque<T> {
     }
     // Resize array into capacity cap//
     private void resize(int cap) {
-        T[] a = (T[]) new Object[8];
+        T[] a = (T[]) new Object[cap];
         int oldIdx = addOne(nextFirst);
         for (int i = 0; i < size; i++) {
             a[i] = items[oldIdx];

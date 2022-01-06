@@ -42,7 +42,6 @@ public class LinkedListDeque<T> {
 
     public boolean isEmpty() {
         return size == 0;
-
     }
 
     public int size() {
@@ -64,9 +63,7 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
-        if (size == 0) {
-            return null;
-        }
+        if (size == 0) { return null; }
         StuffNode removeFirst = sentinel.next;
         sentinel.next.next.prev = sentinel;
         sentinel.next = sentinel.next.next;
@@ -91,13 +88,10 @@ public class LinkedListDeque<T> {
             return null;
         }
         StuffNode target = sentinel.next;
-        for (int i = 0; i != index; i++) {
+        for (int i = 0; i < index; i++) {
             target = target.next;
-            if (i == index) {
-                return target.item;
-            }
         }
-        return null;
+        return target.item;
     }
 
     public T getRecursive(int index) {
@@ -111,3 +105,5 @@ public class LinkedListDeque<T> {
         return getRecursive(index - 1);
     }
 }
+
+

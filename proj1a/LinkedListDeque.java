@@ -1,25 +1,22 @@
 
-
 public class LinkedListDeque<T> {
-
-    private class StuffNode{
+    private class StuffNode {
         private StuffNode prev;
         private T item;
         private StuffNode next;
 
-        public StuffNode(T item,StuffNode prev, StuffNode next) {
+        public StuffNode(T item, StuffNode prev, StuffNode next) {
             this.prev = prev;
             this.item = item;
             this.next = next;
         }
-
     }
     private int size;
     private StuffNode sentinel;
     /* construct an empty LinkedlistDeque*/
 
     public LinkedListDeque() {
-        this.sentinel = new StuffNode(null,null,null);
+        this.sentinel = new StuffNode(null, null, null);
         this.sentinel.next = this.sentinel;
         this.sentinel.prev = this.sentinel;
         this.size = 0;
@@ -41,7 +38,6 @@ public class LinkedListDeque<T> {
         sentinel.prev.next = last;
         sentinel.prev = last;
         size += 1;
-
     }
 
     public boolean isEmpty() {
@@ -68,7 +64,7 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
-        if (sentinel.next == null){
+        if (size == 0) {
             return null;
         }
         StuffNode removeFirst = sentinel.next;
@@ -79,7 +75,7 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast() {
-        if (sentinel.next == null) {
+        if (size == 0) {
             return null;
         }
         StuffNode removeLast = sentinel.prev;
@@ -91,10 +87,7 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int index) {
-        if (sentinel.next == null) {
-            return null;
-        }
-        if (index > size) {
+        if (index > size - 1) {
             return null;
         }
         StuffNode target = sentinel.next;
@@ -107,14 +100,12 @@ public class LinkedListDeque<T> {
         return null;
     }
 
-    public T getRecursive(int index){
-        if (sentinel.next == null || index > size) {
+    public T getRecursive(int index) {
+        if (index > size - 1) {
             return null;
-        }
-        else if (index == 0) {
+        } else if (index == 0) {
             return sentinel.next.item;
-        }
-        else{
+        } else {
             sentinel = sentinel.next;
         }
         return getRecursive(index - 1);
